@@ -13,7 +13,6 @@ N_QUBITS_TOTAL = N_QUBITS_INPUT + N_QUBITS_RESERVOIR
 DT = 0.025
 T_END = 10
 N_DATAPOINTS = 10
-OUTPUT_DATA_FILE_PATH = "5_qubit_reservoir_temporal_data.jsonl"
 
 
 # Generating the training data
@@ -52,7 +51,7 @@ times2 = collect(times1[end]: DT: T_END)
 
 # Generate data
 Threads.@threads for ii in tqdm(1: N_DATAPOINTS)
-    reservoir_excitations = zeros(length(times2), N_QUBITS_RESERVOIR)im
+    reservoir_excitations = zeros(length(times2), N_QUBITS_RESERVOIR)
 
     rho0 = total_rho(input_states[:, :, ii], reservoir)
     tensor_cascade = connect_interface(rho0, times1, gamma_C, gamma_D, interface)
@@ -73,7 +72,7 @@ Threads.@threads for ii in tqdm(1: N_DATAPOINTS)
     )
 
     # Write to JSON file
-    open(OUTPUT_DATA_FILE_PATH, "w") do f
+    open("data/5_qubit_reservoir_temporal_dynamics/experiment_$(ii).json", "w") do f
         JSON.print(f, export_data)
     end
 end
