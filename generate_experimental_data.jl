@@ -61,7 +61,7 @@ Threads.@threads for ii in tqdm(1: N_DATAPOINTS)
     # Measure excitations at each timestep
     for t in 1: length(times2)
         for jj in 1: N_QUBITS_RESERVOIR
-            reservoir_excitations[t, jj] = real( sig_z_exp( tensor_hamiltonian[:, :, t], (jj + N_QUBITS_INPUT) ) )
+            reservoir_excitations[t, jj] = abs( sig_z_exp( tensor_hamiltonian[:, :, t], (jj + N_QUBITS_INPUT) ) )
         end
     end
 
