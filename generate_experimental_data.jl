@@ -12,7 +12,8 @@ N_QUBITS_RESERVOIR = 5
 N_QUBITS_TOTAL = N_QUBITS_INPUT + N_QUBITS_RESERVOIR
 DT = 0.025
 T_END = 10
-N_DATAPOINTS = 5000
+N_DATAPOINTS = 20_000
+OUTPUT_FOLDER = "data/20_000_experiment_run"
 
 
 # Generating the training data
@@ -72,7 +73,7 @@ Threads.@threads for ii in tqdm(1: N_DATAPOINTS)
     )
 
     # Write to JSON file
-    open("data/5_qubit_reservoir_temporal_dynamics/experiment_$(ii).json", "w") do f
+    open(OUTPUT_FOLDER * "/experiment_$(ii).json", "w") do f
         JSON.print(f, export_data)
     end
 end
