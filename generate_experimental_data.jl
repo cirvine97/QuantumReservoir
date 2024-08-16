@@ -12,8 +12,8 @@ N_QUBITS_RESERVOIR = 5
 N_QUBITS_TOTAL = N_QUBITS_INPUT + N_QUBITS_RESERVOIR
 DT = 0.025
 T_END = 10
-N_DATAPOINTS = 20_000
-OUTPUT_FOLDER = "data/20_000_experiment_run"
+N_DATAPOINTS = 60_000
+OUTPUT_FOLDER = "data/60_000_experiment_run"
 
 
 # Generating the training data
