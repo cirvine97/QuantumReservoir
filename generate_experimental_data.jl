@@ -1,8 +1,6 @@
 include("quantum_reservoir.jl")
 using JSON
 
-# Set the seed for reproducibility
-Random.seed!(123)
 # Verify multithreading
 println("Number of threads active is ", Threads.nthreads())
 
@@ -12,10 +10,12 @@ N_QUBITS_RESERVOIR = 5
 N_QUBITS_TOTAL = N_QUBITS_INPUT + N_QUBITS_RESERVOIR
 DT = 0.025
 T_END = 10
-N_DATAPOINTS = 60_000
-OUTPUT_FOLDER = "data/60_000_experiment_run"
+N_DATAPOINTS = 20_000
+OUTPUT_FOLDER = "data/20_000_experiment_run"
 
 
+# Allowing the input states to change every time script is run
+Random.seed!()
 # Generating the training data
 input_states = zeros(N_QUBITS_INPUT ^ 2, N_QUBITS_INPUT ^ 2, N_DATAPOINTS)im
 input_state_labels = zeros(2, N_DATAPOINTS)
@@ -35,6 +35,8 @@ for ii in convert(Int, N_DATAPOINTS/2):N_DATAPOINTS
 end
 
 
+# Set the seed for reproducibility of reservoir configurations
+Random.seed!(123)
 # Reservoir configuration 
 J_matrix = fully_connected_coupling_matrix(N_QUBITS_RESERVOIR)
 # Random cascade terms (but fixed for each state) for symmetry breaking
