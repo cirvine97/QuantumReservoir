@@ -6,10 +6,6 @@ using DataFrames
 using CSV
 using Random
 
-# Set the seed for reproducibility
-Random.seed!(123)
-
-
 function fully_connected_coupling_matrix(N)
     """Return the coupling matrix for a fully connected reservoir where all N qubits interact.
     
