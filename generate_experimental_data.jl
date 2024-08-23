@@ -10,8 +10,8 @@ N_QUBITS_RESERVOIR = 5
 N_QUBITS_TOTAL = N_QUBITS_INPUT + N_QUBITS_RESERVOIR
 DT = 0.025
 T_END = 10
-N_DATAPOINTS = 5_000
-OUTPUT_FOLDER = "data/20_000_experiment_run"
+N_DATAPOINTS = 10_000
+OUTPUT_FOLDER = "data/experiment_run_2"
 
 
 # Allowing the input states to change every time script is run
