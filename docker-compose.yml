@@ -1,0 +1,11 @@
+version: '3'
+services:
+  quantum-reservoir:
+    image: quantum-reservoir
+    build:
+      context: .  
+    volumes:
+      - ./data:/app/data  # Mount host directory 'data' to '/app/data' inside container
+    stdin_open: true  # Keep stdin open for interactive mode
+    tty: true         # Allocate a pseudo-TTY for the container
+  
